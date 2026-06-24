@@ -1,15 +1,16 @@
 package com.belenits.customerinfo.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
+@Data
 @Entity
-@Table(name="customer_info")
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Table(name = "customer_info")
 public class CustomerInfo {
 
     @Id
@@ -19,7 +20,7 @@ public class CustomerInfo {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -30,26 +31,6 @@ public class CustomerInfo {
     @Column(name = "created_date")
     private LocalDateTime createdDate;
 
-    public CustomerInfo() {
-    }
-
-    public CustomerInfo(String name, String email, String phone, String address) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.createdDate = LocalDateTime.now();
-    }
-
-    @Override
-    public String toString() {
-        return "CustomerInfo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", createdDate=" + createdDate +
-                '}';
-    }
+    @Column(name = "active_status")
+    private String activeStatus;
 }
