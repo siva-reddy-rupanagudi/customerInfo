@@ -14,27 +14,33 @@ public class CustomerInfoController {
     @Autowired
     private CustomerInfoService customerInfoService;
 
-    @PostMapping("/addCustomer")
-    public CustomerInfo addCustomer(@RequestBody CustomerInfo customerInfo){
+    //POST /customerinfo/
+    @PostMapping("/")
+    public CustomerInfo addCustomer(@RequestBody CustomerInfo customerInfo) {
         return customerInfoService.addCustomer(customerInfo);
     }
 
-    @GetMapping("/getAllCustomers")
-    public List<CustomerInfo> getAllCustomers(){
+    //GET /customerinfo/all
+    @GetMapping("/all")
+    public List<CustomerInfo> getAllCustomers() {
         return customerInfoService.getAllCustomers();
     }
-    @GetMapping("/getCustomer/{id}")
-    public CustomerInfo getCustomersById(@PathVariable Long id){
+
+    //GET /customerinfo/101
+    @GetMapping("/{id}")
+    public CustomerInfo getCustomersById(@PathVariable Long id) {
         return customerInfoService.getCustomersById(id);
     }
 
-    @DeleteMapping("/deleteCustomerById/{id}")
-    public CustomerInfo deleteCustomerById(@PathVariable Long id){
+    // DELETE /customerinfo/101
+    @DeleteMapping("/{id}")
+    public CustomerInfo deleteCustomerById(@PathVariable Long id) {
         return customerInfoService.deleteCustomerById(id);
     }
 
-    @PutMapping("updateCustomer")
-    public CustomerInfo updateCustomerById( @RequestBody CustomerInfo customerInfo) {
+    // PUT /customerinfo/
+    @PutMapping("/")
+    public CustomerInfo updateCustomerById(@RequestBody CustomerInfo customerInfo) {
         return customerInfoService.updateCustomer(customerInfo);
     }
 
